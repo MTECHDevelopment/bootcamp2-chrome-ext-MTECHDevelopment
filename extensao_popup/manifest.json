@@ -13,10 +13,10 @@
         "default_title": "Diga Olá!",
         "default_popup": "src/popup/popup.html",
         "default_icon": {
-            "16": "src/icons/icon.png",
-            "32": "src/icons/icon.png",
-            "48": "src/icons/icon.png",
-            "128": "src/icons/icon.png"
+            "16": "src/icons/icon16.png",
+            "32": "src/icons/icon32.png",
+            "48": "src/icons/icon48.png",
+            "128": "src/icons/icon128.png"
         }
     },
     "background": {
