@@ -187,7 +187,105 @@ btnSaveNote.addEventListener('click', async () => {
   const tab = await getActiveTab();
   const url = new URL(tab.url || '');
   const noteKey = `note:${url.hostname}`;
-  await chrome.storage.local.set({ [noteKey]: noteText.value });
-  noteStatus.textContent = 'Salvo!';
-  setTimeout(() => (noteStatus.textContent = ''), 1400);
+  const note = noteText.value || '';
+  await chrome.storage.local.set({ [noteKey]: note });
+
+  // Coleta título e meta description da página
+  let pageInfo = { title: tab.title || url.hostname, description: '' };
+  try {
+    if (tab?.id) {
+      const [{ result } = {}] = await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        func: () => {
+          const getMeta = (name) =>
+            document.querySelector(`meta[name="${name}"]`)?.getAttribute('content') ||
+            document.querySelector(`meta[property="og:description"]`)?.getAttribute('content') ||
+            '';
+          const title = document.title || '';
+          const description =
+            getMeta('description') ||
+            getMeta('og:description') ||
+            (document.body?.innerText || '').trim().split(/\n+/).find(Boolean)?.slice(0, 300) ||
+            '';
+          return { title, description };
+        }
+      });
+      if (result) pageInfo = result;
+    }
+  } catch (e) {
+    console.warn('Falha ao obter info da página', e);
+  }
+
+  // Resumo do que a extensão faz
+  const man = chrome.runtime.getManifest?.() || { name: 'Extensão', version: '', description: '' };
+  const extensionSummary = [
+    `${man.name || 'Extensão'} ${man.version ? `(v${man.version})` : ''}`.trim(),
+    man.description || '—',
+    '',
+    'Esta extensão auxilia a leitura e a navegação da página atual:',
+    '- Destaca links com a cor preferida para facilitar a visualização.',
+    '- Exibe estatísticas rápidas (links, imagens, palavras e seleção).',
+    '- Lista títulos (h1–h3) e permite pular para a seção.',
+    '- Possui modo foco para reduzir distrações.',
+    '- Permite salvar notas por site.',
+  ].join('\n');
+
+  // Monta o conteúdo do TXT
+  const now = new Date();
+  const header = [
+    `Página: ${pageInfo.title || url.hostname}`,
+    `URL: ${url.href}`,
+    pageInfo.description ? `Descrição: ${pageInfo.description}` : 'Descrição: (não encontrada)',
+    `Data: ${now.toLocaleString()}`,
+  ].join('\n');
+
+  const fileContent = [
+    '=== Sobre a extensão ===',
+    extensionSummary,
+    '',
+    '=== Informações da página ===',
+    header,
+    '',
+    '=== Sua nota ===',
+    note || '(vazia)'
+  ].join('\n');
+
+  // Gera um nome de arquivo amigável por domínio e data
+  const safeHost = (url.hostname || 'nota').replace(/[^a-z0-9.-]/gi, '_');
+  const stamp = now.toISOString().replace(/[:T]/g, '-').replace(/\..+/, '');
+  const filename = `nota-${safeHost}-${stamp}.txt`;
+
+  // Faz download usando chrome.downloads (requer permissão)
+  // Usa data URL para maior compatibilidade entre contextos
+  const dataUrl = 'data:text/plain;charset=utf-8,' + encodeURIComponent("\uFEFF" + fileContent);
+  const downloadWithApi = () => new Promise((resolve, reject) => {
+    try {
+      chrome.downloads.download({ url: dataUrl, filename, saveAs: true }, (downloadId) => {
+        const err = chrome.runtime.lastError?.message;
+        if (err || downloadId === undefined) return reject(new Error(err || 'Falha no download'));
+        resolve(downloadId);
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+
+  try {
+    await downloadWithApi();
+  } catch (e) {
+    console.warn('API downloads falhou, tentando fallback via <a download>...', e);
+    try {
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    } catch (e2) {
+      console.error('Fallback de âncora também falhou', e2);
+    }
+  }
+
+  noteStatus.textContent = 'Nota salva e TXT gerado!';
+  setTimeout(() => (noteStatus.textContent = ''), 2000);
 });
