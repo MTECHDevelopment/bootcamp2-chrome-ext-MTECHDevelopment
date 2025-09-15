@@ -1,6 +1,3 @@
-const btn = document.getElementById('ping');
-const statusEl = document.getElementById('status');
-btn.addEventListener('click', async () => {
 // Utilitários
 const getActiveTab = async () => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -154,25 +151,37 @@ async function copySelection() {
 
 // Eventos UI
 document.addEventListener('DOMContentLoaded', async () => {
-  await loadState();
-  await refreshPageData();
-  await applyHighlights();
+  try { await loadState(); } catch (e) { console.error('loadState falhou', e); }
+  try { await refreshPageData(); } catch (e) { console.error('refreshPageData falhou', e); }
+  try { await applyHighlights(); } catch (e) { console.error('applyHighlights falhou', e); }
 });
 
 toggleEnabled.addEventListener('change', async (e) => {
   const enabled = e.currentTarget.checked;
-  await chrome.storage.sync.set({ enabled });
-  await applyHighlights();
+  try {
+    await chrome.storage.sync.set({ enabled });
+    await applyHighlights();
+  } catch (e) {
+    console.error('Falha ao alternar destaques', e);
+  }
 });
 
 colorPicker.addEventListener('input', async (e) => {
   const favoriteColor = e.currentTarget.value;
-  await chrome.storage.sync.set({ favoriteColor });
-  await applyHighlights();
+  try {
+    await chrome.storage.sync.set({ favoriteColor });
+    await applyHighlights();
+  } catch (e) {
+    console.error('Falha ao aplicar cor', e);
+  }
 });
 
-btnFocus.addEventListener('click', toggleFocusMode);
-btnCopy.addEventListener('click', copySelection);
+btnFocus.addEventListener('click', async () => {
+  try { await toggleFocusMode(); } catch (e) { console.error('toggleFocusMode falhou', e); }
+});
+btnCopy.addEventListener('click', async () => {
+  try { await copySelection(); } catch (e) { console.error('copySelection falhou', e); }
+});
 
 btnSaveNote.addEventListener('click', async () => {
   const tab = await getActiveTab();
