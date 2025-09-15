@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Olá, Mundo 3xt3ns10n",
-    "version": "0.1.2",
+    "version": "0.1.1",
     "description": "Minha primeira extensão do Google Chrome",
     "icons": {
         "16": "src/icons/icon16.png",
