@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name":"Olá, Mundo 3xt3ns10n",
+    "version":"0.1.1",
+    "description":"Minha primeira extensão do Google Chrome",
+    "action": {
+        "default_popup":"popup.html",
+        "default_title":"Diga Olá!",
+        "default_icon": {
+            "16": "img/icon.png",
+            "48": "img/icon.png",
+            "128": "img/icon.png"
+        },
+    "icons": {
+        "16": "img/icon.png",
+        "48": "img/icon.png",
+        "128": "img/icon.png"
+    }
+    }
+
+}
