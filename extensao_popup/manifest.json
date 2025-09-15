@@ -1,21 +1,33 @@
 {
     "manifest_version": 3,
-    "name":"Olá, Mundo 3xt3ns10n",
-    "version":"0.1.1",
-    "description":"Minha primeira extensão do Google Chrome",
-    "action": {
-        "default_popup":"popup.html",
-        "default_title":"Diga Olá!",
-        "default_icon": {
-            "16": "extensao_popup/src/icons/icon.png",
-            "48": "extensao_popup/src/icons/icon.png",
-            "128": "extensao_popup/src/icons/icon.png"
-        },
+    "name": "Olá, Mundo 3xt3ns10n",
+    "version": "0.1.2",
+    "description": "Minha primeira extensão do Google Chrome",
     "icons": {
-        "16": "extensao_popup/src/icons/icon.png",
-        "48": "extensao_popup/src/icons/icon.png",
-        "128": "extensao_popup/src/icons/icon.png"
-    }
-    }
-
+        "16": "src/icons/icon.png",
+        "32": "src/icons/icon.png",
+        "48": "src/icons/icon.png",
+        "128": "src/icons/icon.png"
+    },
+    "action": {
+        "default_title": "Diga Olá!",
+        "default_popup": "src/popup/popup.html",
+        "default_icon": {
+            "16": "src/icons/icon.png",
+            "32": "src/icons/icon.png",
+            "48": "src/icons/icon.png",
+            "128": "src/icons/icon.png"
+        }
+    },
+    "background": {
+        "service_worker": "src/background/service-worker.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["src/content/content.js"]
+        }
+    ],
+    "options_page": "src/options/options.html"
 }
