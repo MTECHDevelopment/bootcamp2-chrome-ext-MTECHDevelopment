@@ -1,0 +1,183 @@
+/* =============================
+   Estilos gerais da página demo
+   ============================= */
+:root {
+  --bg: #0f1115;
+  --bg-alt: #181b21;
+  --bg-alt-2: #20242c;
+  --border: #2c323b;
+  --text: #e7ecf2;
+  --text-dim: #a5b0bf;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --focus: 0 0 0 3px rgba(99,102,241,.35);
+  --radius-s: 4px;
+  --radius: 10px;
+  --shadow: 0 4px 16px -4px rgba(0,0,0,.4), 0 2px 4px -1px rgba(0,0,0,.35);
+  --gradient: linear-gradient(135deg,#6366f1 0%,#8b5cf6 60%,#ec4899 120%);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+  background: radial-gradient(circle at 25% 15%, #1c2027 0%, #0e1013 70%);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  width: min(1240px, 92%);
+  margin: 0 auto;
+}
+
+/* Cabeçalho */
+.site-header {
+  padding: 3.5rem 0 2.25rem;
+  background: linear-gradient(180deg, #14171c 0%, rgba(20,23,28,0.4) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.site-header:before, .site-header:after {
+  content: "";
+  position: absolute;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle at center, rgba(99,102,241,.55), rgba(99,102,241,0) 65%);
+  top: -140px; left: -140px;
+  filter: blur(12px);
+  opacity: .4;
+}
+.site-header:after {
+  left: auto; right: -160px; top: auto; bottom: -160px;
+  background: radial-gradient(circle at center, rgba(236,72,153,.55), rgba(236,72,153,0) 65%);
+}
+.site-title {
+  margin: 0 0 .35rem;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+.site-subtitle {
+  margin: 0;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+/* Conteúdo principal */
+.content { padding: 2rem 0 3.5rem; }
+.intro-text { margin-bottom: 2.25rem; }
+.intro-text p { max-width: 880px; font-size: 1.05rem; }
+
+.section-title {
+  font-size: 1.65rem;
+  margin: 0 0 1.2rem;
+  letter-spacing: .5px;
+  font-weight: 600;
+  display: flex; align-items: center; gap: .65rem;
+  position: relative;
+}
+.section-title:before {
+  content: "";
+  width: 14px; height: 14px;
+  background: var(--gradient);
+  border-radius: 4px;
+  box-shadow: 0 0 0 4px rgba(99,102,241,.25), 0 0 0 8px rgba(236,72,153,.15);
+}
+
+/* Galeria */
+.gallery { margin-bottom: 3.5rem; }
+.gallery-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+}
+.shot {
+  margin: 0;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.shot img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+.shot figcaption {
+  font-size: .85rem;
+  padding: .55rem .75rem .65rem;
+  color: var(--text-dim);
+  letter-spacing: .5px;
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0));
+  margin-top: auto;
+}
+.placeholder { cursor: pointer; }
+.placeholder:hover { border-color: var(--accent); }
+.placeholder .ph-label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: repeating-conic-gradient(from 45deg, #232830 0deg 15deg, #1b1f25 15deg 30deg);
+  min-height: 140px;
+}
+.placeholder:focus-within, .placeholder:focus { outline: none; box-shadow: var(--focus); }
+
+/* How-to */
+.how-to { margin-bottom: 3.5rem; }
+.how-to ol { counter-reset: passo; list-style: none; padding: 0; margin: 0; }
+.how-to li { counter-increment: passo; margin: 0 0 1rem; background: var(--bg-alt); border: 1px solid var(--border); padding: 1rem 1.1rem 1.1rem; border-radius: var(--radius); box-shadow: var(--shadow); }
+.how-to li:before { content: counter(passo); background: var(--gradient); color: #fff; font-weight: 600; font-size: .75rem; display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; margin-right: .75rem; box-shadow: 0 2px 6px -2px rgba(0,0,0,.5); }
+.how-to pre { background: #0d0f12; padding: .85rem 1rem; border: 1px solid var(--border); border-radius: var(--radius-s); overflow-x: auto; font-size: .8rem; line-height: 1.4; }
+.how-to code, code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: .85em; }
+
+/* Seção original */
+.original-demo { margin-top: 4rem; }
+.orig-wrapper { background: var(--bg-alt-2); border: 1px solid var(--border); padding: 1.75rem 1.5rem 2rem; border-radius: var(--radius); box-shadow: var(--shadow); }
+.original-code-box { background: #0b0d10; padding: 1.25rem 1.1rem 1.6rem; border: 1px solid #1c2128; border-radius: var(--radius-s); position: relative; }
+.original-code-box h1 { margin-top: 0; }
+.original-code-box button { font: inherit; background: var(--accent); border: none; color: #fff; padding: .65rem 1rem; border-radius: var(--radius-s); cursor: pointer; font-weight: 600; letter-spacing: .5px; transition: background .25s; }
+.original-code-box button:hover { background: var(--accent-hover); }
+.original-code-box button:focus { outline: none; box-shadow: var(--focus); }
+.note { margin-top: 0; color: var(--text-dim); font-size: .9rem; }
+
+/* Rodapé */
+.site-footer { background: #14171c; padding: 2.25rem 0 2.75rem; border-top: 1px solid #1e2329; }
+.site-footer p { margin: 0; font-size: .8rem; color: var(--text-dim); }
+.back-top { color: var(--accent); text-decoration: none; font-size: .75rem; font-weight: 600; margin-left: 1rem; }
+.back-top:hover { text-decoration: underline; }
+
+/* Acessibilidade e utilidades */
+:focus-visible { outline: none; box-shadow: var(--focus); }
+
+/* Responsividade */
+@media (max-width: 760px) {
+  .how-to li { font-size: .9rem; }
+  .wrap { width: min(100%, 94%); }
+  .site-header { padding-top: 2.75rem; }
+  .section-title { font-size: 1.45rem; }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f5f7fb;
+    --bg-alt: #ffffff;
+    --bg-alt-2: #f0f3f8;
+    --border: #d8dee6;
+    --text: #1f2732;
+    --text-dim: #5a6675;
+    --shadow: 0 4px 18px -6px rgba(0,0,0,.15), 0 2px 4px -1px rgba(0,0,0,.08);
+  }
+  body { background: radial-gradient(circle at 25% 15%, #f0f4fb 0%, #dde4ee 70%); }
+  .original-code-box { background: #fff; border-color: #d0d8e2; }
+  .how-to pre { background: #f7f9fc; }
+}

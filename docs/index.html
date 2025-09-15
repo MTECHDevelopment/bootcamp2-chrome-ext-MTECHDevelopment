@@ -1,15 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olá</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Página de apresentação da Extensão Popup" />
+    <title>Extensão Popup • Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-    
+    <header class="site-header">
+        <div class="wrap">
+            <h1 class="site-title">Extensão Popup</h1>
+            <p class="site-subtitle">Demonstração e capturas de tela</p>
+        </div>
+    </header>
+    <main class="content wrap" id="topo">
+        <section class="intro-text">
+            <p>Esta página apresenta a <strong>Extensão Popup</strong>. Abaixo você poderá inserir capturas de tela (prints) mostrando o funcionamento: popup, opções, conteúdo, ícone, etc. A seção final mantém o código original exatamente como foi criado para referência.</p>
+        </section>
+        <section class="gallery" aria-label="Galeria de capturas da extensão">
+            <h2 class="section-title">Capturas de Tela</h2>
+            <div class="gallery-grid">
+                <!-- Substitua cada placeholder abaixo por uma <img>. Exemplo:
+                <figure class="shot"><img src="./imgs/popup.png" alt="Popup da extensão"><figcaption>Popup</figcaption></figure>
+                -->
+                <figure class="shot placeholder"><div class="ph-label">Imagem 1</div><figcaption>Popup</figcaption></figure>
+                <figure class="shot placeholder"><div class="ph-label">Imagem 2</div><figcaption>Opções</figcaption></figure>
+                <figure class="shot placeholder"><div class="ph-label">Imagem 3</div><figcaption>Ícone / Toolbar</figcaption></figure>
+                <figure class="shot placeholder"><div class="ph-label">Imagem 4</div><figcaption>Interação na página</figcaption></figure>
+                <figure class="shot placeholder"><div class="ph-label">Imagem 5</div><figcaption>Outro estado</figcaption></figure>
+                <figure class="shot placeholder"><div class="ph-label">Imagem 6</div><figcaption>Mais detalhes</figcaption></figure>
+            </div>
+        </section>
+        <section class="how-to" aria-label="Como usar">
+            <h2 class="section-title">Como adicionar suas imagens</h2>
+            <ol>
+                <li>Crie uma pasta <code>docs/imgs</code> (ou use outra) dentro do repositório.</li>
+                <li>Faça commit das capturas de tela (PNG/JPG/WebP).</li>
+                <li>Substitua cada <code>figure.placeholder</code> por:
+                    <pre><code>&lt;figure class="shot"&gt;
+  &lt;img src="./imgs/popup.png" alt="Popup da extensão" /&gt;
+  &lt;figcaption&gt;Popup&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+                </li>
+                <li>Mantenha textos alternativos (atributo <code>alt</code>) descritivos para acessibilidade.</li>
+            </ol>
+        </section>
+        <section class="original-demo" id="demo" aria-label="Demonstração original">
+            <h2 class="section-title">Código Original (Demo)</h2>
+            <p class="note">Abaixo está o bloco original solicitado, mantido sem alterações internas.</p>
+            <div class="orig-wrapper">
+                <!-- INÍCIO DO CÓDIGO ORIGINAL (linhas intactas) -->
+                <div class="original-code-box">
+                    
 <h1> Olá, mundo!</h1>
 <p>Minha primeira extensão do Chrome</p>
 <button id="oi">Diga oi você também!</button>
 
+                </div>
+                <!-- FIM DO CÓDIGO ORIGINAL -->
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap">
+            <p>© <span id="year"></span> Extensão Popup — MTECHDevelopment</p>
+            <a class="back-top" href="#topo" aria-label="Voltar ao topo">▲ Topo</a>
+        </div>
+    </footer>
+    <script>
+        // Atualiza ano no rodapé
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
