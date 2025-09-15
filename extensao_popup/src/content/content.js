@@ -28,3 +28,11 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
   }
   applyHighlights(currentSettings);
 });
+
+// Listener para ações simples vindas do popup, se necessário no futuro
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  if (msg?.type === 'SCROLL_TO_TOP') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    sendResponse({ ok: true });
+  }
+});

@@ -1,15 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olá</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extensão Popup</title>
+    <link rel="stylesheet" href="popup.css" />
 </head>
 <body>
-    
-<h1> Olá, mundo!</h1>
-<p>Minha primeira extensão do Chrome</p>
-<button id="oi">Diga oi você também!</button>
+    <header class="header">
+        <h1 class="title">Extensão Popup</h1>
+        <small class="subtitle">Atalhos úteis para a página atual</small>
+    </header>
 
-</body>
-</html>
+    <section class="stats" aria-label="Resumo da página">
+        <div class="stat"><span class="label">Links</span><span id="stat-links" class="value">–</span></div>
+        <div class="stat"><span class="label">Imagens</span><span id="stat-images" class="value">–</span></div>
+        <div class="stat"><span class="label">Palavras</span><span id="stat-words" class="value">–</span></div>
+        <div class="stat"><span class="label">Seleção</span><span id="stat-selection" class="value">–</span></div>
+    </section>
+
+    <section class="headings" aria-label="Títulos encontrados">
+        <ul id="headings-list" class="headings-list">
+            <li class="placeholder">Carregando títulos…</li>
+        </ul>
+    </section>
+
+    <section class="controls" aria-label="Destaques e cor">
+        <label class="toggle">
+            <input id="toggle-enabled" type="checkbox" />
+            <span>Destacar links</span>
+        </label>
+        <label class="color">
+            Cor
+            <input id="color-picker" type="color" value="#ec0089" />
+        </label>
+    </section>
+
+    <section class="actions" aria-label="Ações rápidas">
+        <button id="btn-copy" class="btn primary">Copiar seleção</button>
+        <button id="btn-focus" class="btn">Ativar foco</button>
+    </section>
+
+    <section class="notes" aria-label="Notas por site">
+        <label for="note-text" class="note-label">Nota para <span id="host">este site</span>:</label>
+        <textarea id="note-text" rows="3" placeholder="Escreva uma nota rápida…"></textarea>
+        <div class="notes-actions">
+            <button id="btn-save-note" class="btn">Salvar nota</button>
+            <span id="note-status" class="note-status" role="status" aria-live="polite"></span>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <span class="hint">Dica: personalize a cor e use foco para ler com menos distrações.</span>
+    </footer>
+
+    <script src="popup.js" defer></script>
+    </body>
+    </html>
