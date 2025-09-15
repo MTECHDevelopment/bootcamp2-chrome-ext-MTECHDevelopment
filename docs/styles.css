@@ -57,6 +57,7 @@ body {
   margin: 0 0 .35rem;
   font-size: clamp(2rem, 5vw, 3.25rem);
   background: var(--gradient);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   font-weight: 700;
@@ -149,6 +150,46 @@ body {
 .original-code-box button:hover { background: var(--accent-hover); }
 .original-code-box button:focus { outline: none; box-shadow: var(--focus); }
 .note { margin-top: 0; color: var(--text-dim); font-size: .9rem; }
+
+/* Download CTA */
+.download-cta {
+  margin-top: 3rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem 1.25rem 1.75rem;
+}
+.download-cta .cta-desc {
+  margin: 0 0 1rem;
+  color: var(--text-dim);
+}
+.download-cta .cta-hint {
+  margin: .9rem 0 0;
+  color: var(--text-dim);
+  font-size: .9rem;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  font-weight: 700;
+  letter-spacing: .3px;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--radius-s);
+  padding: .8rem 1.1rem;
+  border: 1px solid transparent;
+}
+.btn-ico { font-size: 1rem; transform: translateY(-1px); }
+.btn-download {
+  color: #fff;
+  background-image: var(--gradient);
+  box-shadow: 0 6px 18px -8px rgba(99,102,241,.65);
+}
+.btn-download:hover { filter: brightness(1.05); }
+.btn-download:focus { box-shadow: var(--focus); }
 
 /* Rodapé */
 .site-footer { background: #14171c; padding: 2.25rem 0 2.75rem; border-top: 1px solid #1e2329; }
