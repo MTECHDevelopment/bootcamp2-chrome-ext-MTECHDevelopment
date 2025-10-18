@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
-          path: playwright-report/
+          path: extensao_popup/playwright-report/
           retention-days: 30
 
       - name: Publicar resultados JSON
@@ -52,21 +52,21 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: test-results/
+          path: extensao_popup/test-results/
           retention-days: 30
 
       - name: Publicar pacote da extensão
         uses: actions/upload-artifact@v4
         with:
           name: extension-zip
-          path: dist/extension.zip
+          path: extensao_popup/dist/extension.zip
           retention-days: 90
 
       - name: Publicar dist completo
         uses: actions/upload-artifact@v4
         with:
           name: extension-dist
-          path: dist/
+          path: extensao_popup/dist/
           retention-days: 30
 
   release:
