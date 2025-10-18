@@ -10,8 +10,8 @@ COPY package*.json ./
 # Instala dependências
 RUN npm ci --silent
 
-# Instala navegadores (garantindo Chromium)
-RUN npx playwright install --with-deps chromium
+# Nota: mcr.microsoft.com/playwright:v1.46.0-jammy já inclui Chromium
+# Não é necessário instalar novamente com npx playwright install
 
 # Copia todo o código fonte
 COPY . .
