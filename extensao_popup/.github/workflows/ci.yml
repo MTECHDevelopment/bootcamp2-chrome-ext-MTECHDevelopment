@@ -35,8 +35,11 @@ jobs:
       - name: Build da extensão
         run: npm run build
 
-      - name: Executar testes E2E
-        run: npm run test:e2e
+      - name: Instalar Xvfb (runner headless X)
+        run: sudo apt-get update && sudo apt-get install -y xvfb dbus-x11
+
+      - name: Executar testes E2E (com X virtual)
+        run: xvfb-run --auto-servernum --server-args='-screen 0 1920x1080x24' npm run test:e2e
         continue-on-error: true
 
       - name: Publicar relatório do Playwright

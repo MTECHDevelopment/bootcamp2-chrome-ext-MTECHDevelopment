@@ -44,8 +44,9 @@ export default defineConfig({
     // Trace apenas em falha
     trace: 'on-first-retry',
     
-    // Headless mode
-    headless: true,
+    // Headless deve ser false para permitir carregamento de extensões no Chromium
+    // (extensões não são carregadas corretamente em modo headless)
+    headless: false,
   },
   
   // Projetos (navegadores)

@@ -9,5 +9,12 @@ services:
       - ./:/app
       - /app/node_modules
     working_dir: /app
-    command: npm run test:e2e
+    # Executa os testes em um X virtual usando xvfb-run para permitir modo headful
+    command:
+      - xvfb-run
+      - --auto-servernum
+      - --server-args=-screen 0 1920x1080x24
+      - npm
+      - run
+      - test:e2e
     shm_size: 2gb  # evita falhas do Chromium por falta de shared memory

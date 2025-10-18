@@ -13,7 +13,8 @@ test.describe('Testes E2E da Extensão Chrome', () => {
   test.beforeAll(async () => {
     // Inicia o contexto do navegador com a extensão carregada
     context = await chromium.launchPersistentContext('', {
-      headless: true,
+      // Deve rodar em modo headful para carregar a extensão corretamente
+      headless: false,
       args: [
         `--disable-extensions-except=${dist}`,
         `--load-extension=${dist}`,

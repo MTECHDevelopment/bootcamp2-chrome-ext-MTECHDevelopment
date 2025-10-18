@@ -13,6 +13,12 @@ RUN npm ci --silent
 # Instala navegadores (garantindo Chromium)
 RUN npx playwright install --with-deps chromium
 
+# Instala X virtual framebuffer para permitir execução de browsers em modo headful
+# e dbus para evitar erros relacionados a conexão D-Bus
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends xvfb dbus-x11 \
+	&& rm -rf /var/lib/apt/lists/*
+
 # Copia todo o código fonte
 COPY . .
 
