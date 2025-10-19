@@ -6,8 +6,8 @@ services:
       - CI=true
       - NODE_ENV=test
     volumes:
-      - ./:/app
-      - /app/node_modules
+      - ./:/app:delegated
+      - node_modules:/app/node_modules
     working_dir: /app
     # Executa os testes em um X virtual usando xvfb-run para permitir modo headful
     command:
@@ -18,3 +18,7 @@ services:
       - run
       - test:e2e
     shm_size: 2gb  # evita falhas do Chromium por falta de shared memory
+
+volumes:
+  node_modules:
+    driver: local
