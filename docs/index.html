@@ -27,39 +27,31 @@
                 <!-- Substitua cada placeholder abaixo por uma <img>. Exemplo:
                 <figure class="shot"><img src="./imgs/popup.png" alt="Popup da extensão"><figcaption>Popup</figcaption></figure>
                 -->
-                <figure class="shot"><img loading="lazy" src="./imgs/mudando_cor.png" alt="Mudando cor do destaque dos links"><figcaption>Mudando cor do destaque dos links</figcaption></figure>
-                <figure class="shot"><img loading="lazy" src="./imgs/foco.png" alt="Modo foco"><figcaption>Modo foco</figcaption></figure>
-                <figure class="shot"><img loading="lazy" src="./imgs/copiando_texto.png" alt="Copiando texto"><figcaption>Copiando texto</figcaption></figure>
-                <figure class="shot"><img loading="lazy" src="./imgs/notas.png" alt="Notas que podem ser salvas"><figcaption>Notas que podem ser salvas</figcaption></figure>
-                <p>Referências para as imagens:  
-                    <a href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer">W3Schools</a>,
-                    <a href="https://www.todamateria.com.br/matrizes-resumo/" target="_blank" rel="noopener noreferrer">Toda Matéria - Matrizes</a>
-                </p>
+                <figure class="shot placeholder"><div class="ph-label">Imagem 1</div><figcaption>Popup</figcaption></figure>
+                <figure class="shot placeholder"><div class="ph-label">Imagem 2</div><figcaption>Opções</figcaption></figure>
+                <figure class="shot placeholder"><div class="ph-label">Imagem 3</div><figcaption>Ícone / Toolbar</figcaption></figure>
+                <figure class="shot placeholder"><div class="ph-label">Imagem 4</div><figcaption>Interação na página</figcaption></figure>
+                <figure class="shot placeholder"><div class="ph-label">Imagem 5</div><figcaption>Outro estado</figcaption></figure>
+                <figure class="shot placeholder"><div class="ph-label">Imagem 6</div><figcaption>Mais detalhes</figcaption></figure>
             </div>
         </section>
-        <section class="features" aria-label="Recursos da extensão">
-            <h2 class="section-title">O que a extensão faz</h2>
-            <p>
-                A extensão foi pensada para facilitar a leitura e o dia a dia em qualquer site.
-                No popup, você encontra ferramentas rápidas para destacar links, ver um resumo da página,
-                navegar por títulos, ativar um modo foco, copiar o texto selecionado e registrar notas por site.
-            </p>
-            <ul>
-                <li><strong>Destaque de links:</strong> ligue ou desligue e escolha a cor que preferir.</li>
-                <li><strong>Resumo da página:</strong> mostra quantos links e imagens existem, a quantidade de palavras e o tamanho da seleção atual.</li>
-                <li><strong>Navegação por títulos:</strong> lista H1–H3; ao clicar, a página rola suavemente até a seção.</li>
-                <li><strong>Modo foco:</strong> escurece as bordas para reduzir distrações e ajudar na leitura.</li>
-                <li><strong>Copiar seleção:</strong> envia o texto selecionado direto para a área de transferência.</li>
-                <li><strong>Notas por site + exportação:</strong> escreva uma nota para o domínio atual e salve; ao salvar, é gerado um arquivo .txt contendo um resumo do que a extensão faz, o título/URL/descrição da página, a data e a sua nota.</li>
-            </ul>
-            <p>
-                Tudo funciona de forma simples: abra a página, clique no ícone da extensão e use o popup.
-                Suas preferências de cor e as notas ficam guardadas para você continuar depois.
-            </p>
+        <section class="how-to" aria-label="Como usar">
+            <h2 class="section-title">Como adicionar suas imagens</h2>
+            <ol>
+                <li>Crie uma pasta <code>docs/imgs</code> (ou use outra) dentro do repositório.</li>
+                <li>Faça commit das capturas de tela (PNG/JPG/WebP).</li>
+                <li>Substitua cada <code>figure.placeholder</code> por:
+                    <pre><code>&lt;figure class="shot"&gt;
+  &lt;img src="./imgs/popup.png" alt="Popup da extensão" /&gt;
+  &lt;figcaption&gt;Popup&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+                </li>
+                <li>Mantenha textos alternativos (atributo <code>alt</code>) descritivos para acessibilidade.</li>
+            </ol>
         </section>
         <section class="original-demo" id="demo" aria-label="Demonstração original">
             <h2 class="section-title">Código Original (Demo)</h2>
-            <p class="note">Minha primeira extensão do Chrome</p>
+            <p class="note">Abaixo está o bloco original solicitado, mantido sem alterações internas.</p>
             <div class="orig-wrapper">
                 <!-- INÍCIO DO CÓDIGO ORIGINAL (linhas intactas) -->
                 <div class="original-code-box">
@@ -71,26 +63,6 @@
                 </div>
                 <!-- FIM DO CÓDIGO ORIGINAL -->
             </div>
-        </section>
-
-        <!-- CTA de Download da extensão -->
-        <section class="download-cta" aria-labelledby="download-title">
-            <h2 id="download-title" class="section-title">Baixar a Extensão</h2>
-            <p class="cta-desc">Faça o download do arquivo .zip para instalar manualmente no Chrome.</p>
-            <!-- Substitua o valor do href abaixo pelo seu link direto do .zip -->
-            <a
-                class="btn btn-download"
-                href="https://github.com/MTECHDevelopment/bootcamp2-chrome-ext-MTECHDevelopment/archive/refs/tags/v1.0.zip"
-                target="_blank"
-                rel="noopener noreferrer"
-                download="extensao_popup.zip"
-                aria-label="Baixar arquivo ZIP da extensão"
-            >
-                <!-- Ícone simples acessível -->
-                <span aria-hidden="true" class="btn-ico" role="img">⬇</span>
-                Baixar extensão (.zip)
-            </a>
-            <p class="cta-hint">Depois de baixar, extraia o .zip e em <strong>chrome://extensions</strong> ative o <em>Modo do desenvolvedor</em> → <strong>Carregar sem compactação</strong> e selecione a pasta extraída.</p>
         </section>
     </main>
     <footer class="site-footer">
