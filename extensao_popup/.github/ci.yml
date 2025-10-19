@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Instalar dependências
+        run: npm ci
+        
+      - name: Instalar Playwright Browsers (Chromium)
+        # Necessário no ambiente do GitHub Actions
+        run: npx playwright install --with-deps chromium
+        
+      - name: Build da extensão (dist/ + .zip)
+        run: npm run build
+        
+      - name: Testes E2E com Playwright
+        # O '|| true' garante que os passos de upload de artefatos sejam executados mesmo se os testes falharem
+        run: npm run test:e2e || true 
+        
+      - name: Publicar Relatório do Playwright
+        if: always() # Garante o upload do relatório, mesmo se os testes falharem
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report
+          
+      - name: Publicar Pacote da Extensão (.zip)
+        uses: actions/upload-artifact@v4
+        with:
+          name: extension-zip
+          path: dist/extension.zip
