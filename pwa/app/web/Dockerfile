@@ -12,4 +12,4 @@ COPY . .
 EXPOSE 80
 
 # Roda o script "start" (que é 'serve -s . -l 80')
-CMD ["npm", "start"]
+CMD ["npx", "serve", "-s", ".", "-l", "80"]
