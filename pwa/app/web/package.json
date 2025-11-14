@@ -1,0 +1,15 @@
+{
+  "name": "bootcamp-web",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "serve -s . -l 80"
+  },
+  "dependencies": {
+    "serve": "^14.2.5"
+  },
+  "main": "main.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

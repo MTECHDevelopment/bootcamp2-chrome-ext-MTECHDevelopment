@@ -1,0 +1,15 @@
+services:
+  e2e:
+    build: .
+    image: my-ext/e2e:latest # Nome da imagem para referência
+    environment:
+      - CI=true # Útil para configurar ambientes de teste
+    volumes:
+      # Monta o diretório local no container. Permite ver o relatório localmente.
+      - ./:/app
+      # Impedir que o volume overwrite o node_modules que o Dockerfile instalou
+      - /app/node_modules 
+    working_dir: /app
+    # Executa apenas os testes E2E, já que o build já foi feito no Dockerfile
+    command: npm run test:e2e
+    shm_size: '2gb' # Essencial para evitar falhas do Chromium por falta de shared memory
