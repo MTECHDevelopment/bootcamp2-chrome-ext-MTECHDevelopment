@@ -1,9 +1,9 @@
-FROM node:20-alpine
+FROM mcr.microsoft.com/playwright:v1.56.1-jammy
 WORKDIR /app
 
 # Copia o package.json e instala o 'serve'
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm install --silent
 
 # Copia todo o seu PWA (HTML, CSS, JS, icons, etc)
 COPY . .
@@ -12,4 +12,4 @@ COPY . .
 EXPOSE 80
 
 # Roda o script "start" (que é 'serve -s . -l 80')
-CMD ["npm", "start"]
+CMD ["npx", "serve", "-s", ".", "-l", "80"]

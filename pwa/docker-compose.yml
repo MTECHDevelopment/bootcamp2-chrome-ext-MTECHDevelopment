@@ -1,15 +1,22 @@
 services:
-  e2e:
-    build: .
-    image: my-ext/e2e:latest # Nome da imagem para referência
+  api:
+    build: ./app/api
+    ports: ["3000:3000"]
+    container_name: bootcamp-api
     environment:
-      - CI=true # Útil para configurar ambientes de teste
-    volumes:
-      # Monta o diretório local no container. Permite ver o relatório localmente.
-      - ./:/app
-      # Impedir que o volume overwrite o node_modules que o Dockerfile instalou
-      - /app/node_modules 
-    working_dir: /app
-    # Executa apenas os testes E2E, já que o build já foi feito no Dockerfile
-    command: npm run test:e2e
-    shm_size: '2gb' # Essencial para evitar falhas do Chromium por falta de shared memory
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  web:
+    build: ./app/web
+    ports: ["8080:80"]
+    container_name: bootcamp-web
+    environment:
+      - API_URL=http://api:3000  # URL interna do Docker
+    depends_on:
+      api:
+        condition: service_healthy

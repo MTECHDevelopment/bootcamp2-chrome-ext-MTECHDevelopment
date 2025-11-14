@@ -6,8 +6,7 @@ COPY package*.json ./
 RUN npm install --silent
 
 COPY . .
-# Executa o build da extensão (cria a pasta dist/) DENTRO do container
-RUN npm run build
+EXPOSE 3000
 
 # Comando padrão ao rodar a imagem, será sobrescrito pelo docker-compose.yml
-CMD ["npm","test"]
+CMD ["npm","start"]
