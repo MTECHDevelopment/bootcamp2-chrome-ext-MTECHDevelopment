@@ -3,58 +3,52 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Extensão Popup</title>
+    <title>Bloco de Notas PWA</title>
+    
+    <meta name="theme-color" content="#171a20"/>
+    <meta name="description" content="Um bloco de notas simples que funciona offline."/>
+    
     <link rel="stylesheet" href="style.css" />
     <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
 </head>
 <body>
-    <header class="header">
-        <h1 class="title">Extensão Popup</h1>
-        <small class="subtitle">Atalhos úteis para a página atual</small>
-    </header>
 
-    <section class="stats" aria-label="Resumo da página">
-        <div class="stat"><span class="label">Links</span><span id="stat-links" class="value">–</span></div>
-        <div class="stat"><span class="label">Imagens</span><span id="stat-images" class="value">–</span></div>
-        <div class="stat"><span class="label">Palavras</span><span id="stat-words" class="value">–</span></div>
-        <div class="stat"><span class="label">Seleção</span><span id="stat-selection" class="value">–</span></div>
-    </section>
+    <div class="app-layout">
 
-    <section class="headings" aria-label="Títulos encontrados">
-        <ul id="headings-list" class="headings-list">
-            <li class="placeholder">Carregando títulos…</li>
-        </ul>
-    </section>
+        <aside class="sidebar">
+            <header class="header">
+                <h1 class="title">Bloco de Notas</h1>
+                <button id="btn-new-note" class="btn primary">Nova Nota</button>
+            </header>
+            <ul id="note-list" class="note-list">
+                <li class="placeholder">Nenhuma nota ainda...</li>
+            </ul>
+        </aside>
 
-    <section class="controls" aria-label="Destaques e cor">
-        <label class="toggle">
-            <input id="toggle-enabled" type="checkbox" />
-            <span>Destacar links</span>
-        </label>
-        <label class="color">
-            Cor
-            <input id="color-picker" type="color" value="#ec0089" />
-        </label>
-    </section>
+        <main class="editor-container">
+            <section class="editor-area">
+                <textarea id="note-editor" placeholder="Escreva sua nota aqui..."></textarea>
+            </section>
 
-    <section class="actions" aria-label="Ações rápidas">
-        <button id="btn-copy" class="btn primary">Copiar seleção</button>
-        <button id="btn-focus" class="btn">Ativar foco</button>
-    </section>
+            <section class="stats" aria-label="Resumo da nota">
+                <div class="stat"><span class="label">Palavras</span><span id="stat-words" class="value">0</span></div>
+                <div class="stat"><span class="label">Links</span><span id="stat-links" class="value">0</span></div>
+                <div class="stat"><span class="label">Imagens</span><span id="stat-images" class="value">0</span></div>
+            </section>
 
-    <section class="notes" aria-label="Notas por site">
-        <label for="note-text" class="note-label">Nota para <span id="host">este site</span>:</label>
-        <textarea id="note-text" rows="3" placeholder="Escreva uma nota rápida…"></textarea>
-        <div class="notes-actions">
-            <button id="btn-save-note" class="btn">Salvar nota</button>
-            <span id="note-status" class="note-status" role="status" aria-live="polite"></span>
-        </div>
-    </section>
+            <section class="controls" aria-label="Controles do editor">
+                <label class="color">
+                    Cor da Borda
+                    <input id="color-picker" type="color" value="#6366f1" />
+                </label>
+                <div class="actions">
+                    <button id="btn-download" class="btn">Baixar .txt</button>
+                    <button id="btn-delete-note" class="btn danger">Excluir Nota</button>
+                </div>
+            </section>
+        </main>
 
-    <footer class="footer">
-        <span class="hint">Dica: personalize a cor e use foco para ler com menos distrações.</span>
-    </footer>
-
-    <script src="main.js" defer></script>
-    </body>
-    </html>
+    </div> <script src="main.js" defer></script>
+</body>
+</html>
