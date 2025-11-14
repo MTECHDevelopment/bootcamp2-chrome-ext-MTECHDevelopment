@@ -13,10 +13,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const statWords = document.getElementById('stat-words');
     const statLinks = document.getElementById('stat-links');
     const statImages = document.getElementById('stat-images');
+    const statCharacters = document.getElementById('stat-characters');
+    const statSelectedCharacters = document.getElementById('stat-selected-characters');
 
     // --- Estado da Aplicação ---
     let notes = [];
     let currentNoteId = null;
+
+    // Lógica de URL para funcionar no Docker E no GitHub Pages
+    let apiUrl = 'http://localhost:3000/api'; // Padrão
+
+    // Se estiver rodando no GitHub Pages, use uma API pública
+    if (window.location.hostname.includes('github.io')) {
+        apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto'; 
+    }
+
+fetch(apiUrl)
+  .then(res => res.json())
+  .then(data => console.log('Dados da API:', data));
 
     // --- Funções ---
 
@@ -175,6 +189,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const words = text.trim().split(/\s+/).filter(Boolean).length;
         statWords.textContent = words;
 
+        // Contar Caracteres
+        const characters = text.length;
+        statCharacters.textContent = characters;
+
+        // Contar caracteres do texto selecionado
+        const selectedText = noteEditor.value.substring(noteEditor.selectionStart, noteEditor.selectionEnd);
+        const selectedCharacters = selectedText.length;
+        statSelectedCharacters.textContent = selectedCharacters;
+
         // Contar Links (regex simples para URLs)
         const links = (text.match(/https?:\/\/[^\s]+/gi) || []).length;
         statLinks.textContent = links;
@@ -219,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Registro do Service Worker (para PWA) ---
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('serviceworker.js')
+            navigator.serviceWorker.register('service-worker.js')
                 .then(reg => console.log('Service Worker registrado!', reg))
                 .catch(err => console.error('Erro ao registrar Service Worker:', err));
         });

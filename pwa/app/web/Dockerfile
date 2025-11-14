@@ -3,7 +3,7 @@ WORKDIR /app
 
 # Copia o package.json e instala o 'serve'
 COPY package*.json ./
-RUN npm install --silent
+RUN npm ci
 
 # Copia todo o seu PWA (HTML, CSS, JS, icons, etc)
 COPY . .
