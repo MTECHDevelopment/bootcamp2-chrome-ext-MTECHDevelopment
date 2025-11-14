@@ -9,4 +9,8 @@ COPY . .
 EXPOSE 3000
 
 # Comando padrão ao rodar a imagem, será sobrescrito pelo docker-compose.yml
+<<<<<<< HEAD
 CMD ["npm","start"]
+=======
+CMD ["node","index.js"]
+>>>>>>> d6e7805 (.)

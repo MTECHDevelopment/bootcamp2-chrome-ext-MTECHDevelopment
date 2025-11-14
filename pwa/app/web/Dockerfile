@@ -3,7 +3,7 @@ WORKDIR /app
 
 # Copia o package.json e instala o 'serve'
 COPY package*.json ./
-RUN npm install --silent
+RUN npm ci
 
 # Copia todo o seu PWA (HTML, CSS, JS, icons, etc)
 COPY . .
@@ -12,4 +12,4 @@ COPY . .
 EXPOSE 80
 
 # Roda o script "start" (que é 'serve -s . -l 80')
-CMD ["npx", "serve", "-s", ".", "-l", "80"]
+CMD ["npm", "start"]
