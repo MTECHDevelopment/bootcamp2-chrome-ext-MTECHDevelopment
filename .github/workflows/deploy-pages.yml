@@ -21,7 +21,7 @@ jobs:
         run: |
           mkdir -p deploy
           cp -r pwa/app/web/* deploy/
-          echo "✅ PWA copiada para ./deploy"
+          echo "PWA copiada para ./deploy com sucesso"
       
       - name: Deploy PWA com gh-pages
         uses: peaceiris/actions-gh-pages@v3
@@ -36,5 +36,5 @@ jobs:
       
       - name: PWA publicada com sucesso!
         run: |
-          echo "🎉 PWA publicada em:"
+          echo "PWA publicada em:"
           echo "https://mtech.github.io/bootcamp2-chrome-ext-MTECHDevelopment/"
