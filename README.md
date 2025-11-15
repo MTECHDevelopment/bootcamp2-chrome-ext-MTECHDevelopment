@@ -338,4 +338,4 @@ Observações:
 
 ---
 
-MTECHDevelopment e CatPy123 — Bootcamp 2
+MTECHDevelopment e CatPy123 — Bootcamp 2Deploy trigger
