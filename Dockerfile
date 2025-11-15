@@ -1,0 +1,15 @@
+FROM mcr.microsoft.com/playwright:v1.56.1-jammy
+WORKDIR /app
+
+# Copia o package.json e instala o 'serve'
+COPY package*.json ./
+RUN npm ci
+
+# Copia todo o seu PWA (HTML, CSS, JS, icons, etc)
+COPY . .
+
+# Expõe a porta 80, que o 'serve' estará ouvindo
+EXPOSE 80
+
+# Roda o script "start" (que é 'serve -s . -l 80')
+CMD ["npx", "serve", "-s", ".", "-l", "80"]
