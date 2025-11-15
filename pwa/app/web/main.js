@@ -15,6 +15,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const statImages = document.getElementById('stat-images');
     const statCharacters = document.getElementById('stat-characters');
     const statSelectedCharacters = document.getElementById('stat-selected-characters');
+    const btnInstall = document.getElementById('btn-install');
+
+    // --- PWA Install Handler ---
+    let deferredPrompt;
+    
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        btnInstall.style.display = 'flex'; // Mostra o botão quando é possível instalar
+    });
+    
+    btnInstall.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`Instalação: ${outcome}`);
+            deferredPrompt = null;
+            btnInstall.style.display = 'none'; // Esconde após tentar instalar
+        }
+    });
+
+    window.addEventListener('appinstalled', () => {
+        console.log('PWA foi instalado com sucesso!');
+        deferredPrompt = null;
+        btnInstall.style.display = 'none';
+    });
 
     // --- Estado da Aplicação ---
     let notes = [];

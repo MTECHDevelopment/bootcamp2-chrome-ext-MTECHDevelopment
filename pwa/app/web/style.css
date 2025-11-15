@@ -166,6 +166,7 @@ body {
 }
 .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); border-color: transparent; }
 .btn.danger { background: var(--danger); border-color: transparent; color: white; }
+.btn.install-btn { background: linear-gradient(135deg, #10b981, #059669); border-color: transparent; color: white; }
 .btn:hover { filter: brightness(1.1); }
 .btn:active { transform: translateY(1px); }
 
