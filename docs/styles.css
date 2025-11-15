@@ -200,6 +200,56 @@ body {
 /* Acessibilidade e utilidades */
 :focus-visible { outline: none; box-shadow: var(--focus); }
 
+/* PWA Install Button */
+.pwa-install {
+  background: linear-gradient(135deg, rgba(99,102,241,.1) 0%, rgba(139,92,246,.08) 100%);
+  border: 1px solid rgba(99,102,241,.3);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.pwa-install h3 {
+  margin: 0 0 .5rem;
+  font-size: 1.2rem;
+  color: var(--accent-hover);
+}
+
+.pwa-install p {
+  margin: 0 0 1rem;
+  color: var(--text-dim);
+  font-size: .95rem;
+}
+
+.install-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  border-radius: var(--radius-s);
+  padding: .75rem 1.25rem;
+  font-weight: 600;
+  font-size: .95rem;
+  cursor: pointer;
+  transition: all .3s ease;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, .3);
+}
+
+.install-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, .4);
+  filter: brightness(1.1);
+}
+
+.install-btn:active {
+  transform: translateY(0);
+}
+
+.install-btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none;
+}
+
 /* Responsividade */
 @media (max-width: 760px) {
   .how-to li { font-size: .9rem; }

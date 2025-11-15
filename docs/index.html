@@ -44,6 +44,11 @@
                 No popup, você encontra ferramentas rápidas para destacar links, ver um resumo da página,
                 navegar por títulos, ativar um modo foco, copiar o texto selecionado e registrar notas por site.
             </p>
+            <div class="pwa-install">
+                <h3>📱 Instale o PWA de Notas</h3>
+                <p>Temos também um PWA (Progressive Web App) que permite criar e gerenciar notas com estatísticas!</p>
+                <button id="btn-install-pwa" class="install-btn">⬇️ Instalar App</button>
+            </div>
             <ul>
                 <li><strong>Destaque de links:</strong> ligue ou desligue e escolha a cor que preferir.</li>
                 <li><strong>Resumo da página:</strong> mostra quantos links e imagens existem, a quantidade de palavras e o tamanho da seleção atual.</li>
@@ -99,6 +104,7 @@
             <a class="back-top" href="#topo" aria-label="Voltar ao topo">▲ Topo</a>
         </div>
     </footer>
+    <script src="./pwa-install.js"></script>
     <script>
         // Atualiza ano no rodapé
         document.getElementById('year').textContent = new Date().getFullYear();
