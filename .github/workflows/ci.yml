@@ -104,32 +104,32 @@ jobs:
       - name: Rodar Lighthouse CI
         run: |
           mkdir -p .lighthouseci
-          lhci autorun --collect.url=http://localhost:8080 || echo "Lighthouse concluído com avisos"
+          lhci autorun 2>&1 | tee lighthouse-output.log || true
+          echo "Lighthouse executado"
         continue-on-error: true
       
       - name: Parar servidor
         if: always()
         run: |
           if [ -f /tmp/serve.pid ]; then
-            kill $(cat /tmp/serve.pid) || true
+            kill $(cat /tmp/serve.pid) 2>/dev/null || true
           fi
       
-      - name: Listar arquivos gerados
+      - name: Debug - Listar arquivos
         if: always()
         run: |
-          echo "Conteúdo de .lighthouseci:"
-          ls -la .lighthouseci/ || echo "Diretório não encontrado"
-          find . -name "*.report.*" -type f 2>/dev/null || echo "Nenhum relatório encontrado"
+          echo "=== Arquivos em .lighthouseci ==="
+          ls -laR .lighthouseci 2>/dev/null || echo "Vazio/não existe"
+          echo ""
+          echo "=== Todos os .html ==="
+          find . -name "*.html" -type f 2>/dev/null | head -20
       
       - name: Upload Relatório Lighthouse
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: lighthouse-report
-          path: |
-            .lighthouseci/
-            **/*.report.html
-            **/*.report.json
+          path: .lighthouseci/
           retention-days: 30
           if-no-files-found: warn
 
