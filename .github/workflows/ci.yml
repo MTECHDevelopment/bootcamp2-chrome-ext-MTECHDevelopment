@@ -90,9 +90,19 @@ jobs:
         run: |
           npx serve -l 8080 &
           echo $! > /tmp/serve.pid
-          sleep 5
-          curl -I http://localhost:8080 || echo "Servidor ainda iniciando..."
-          sleep 3
+          echo "Aguardando servidor iniciar..."
+          for i in {1..30}; do
+            if curl -s http://localhost:8080 > /dev/null; then
+              echo "Servidor pronto!"
+              break
+            fi
+            echo "Tentativa $i/30..."
+            sleep 2
+          done
+          curl -I http://localhost:8080
+      
+      - name: Criar diretório para relatórios
+        run: mkdir -p .lighthouseci
       
       - name: Rodar Lighthouse CI
         run: |
@@ -130,6 +140,9 @@ jobs:
       contents: read
       pages: write
       id-token: write
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
