@@ -24,12 +24,14 @@ services:
       dockerfile: Dockerfile.e2e
     container_name: bootcamp-e2e
     # Este serviço roda os testes e para
-    command: npx playwright test
+    command: >
+      sh -c "npx playwright test && npx lhci autorun --config=./lighthouserc.js"
     depends_on:
       - web
       - api
     networks:
       - app-network
 
-networks:
-  app-network:
+    volumes:
+      - ./playwright-report:/app/playwright-report
+      - ./.lighthouseci:/app/.lighthouseci
