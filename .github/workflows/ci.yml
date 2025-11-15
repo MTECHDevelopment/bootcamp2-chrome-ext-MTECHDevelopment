@@ -101,12 +101,10 @@ jobs:
           done
           curl -I http://localhost:8080
       
-      - name: Criar diretório para relatórios
-        run: mkdir -p .lighthouseci
-      
       - name: Rodar Lighthouse CI
         run: |
-          lhci autorun || echo "Lighthouse concluído com avisos"
+          mkdir -p .lighthouseci
+          lhci autorun --collect.url=http://localhost:8080 || echo "Lighthouse concluído com avisos"
         continue-on-error: true
       
       - name: Parar servidor
@@ -116,25 +114,28 @@ jobs:
             kill $(cat /tmp/serve.pid) || true
           fi
       
-      - name: Upload Relatório Lighthouse (HTML)
+      - name: Listar arquivos gerados
+        if: always()
+        run: |
+          echo "Conteúdo de .lighthouseci:"
+          ls -la .lighthouseci/ || echo "Diretório não encontrado"
+          find . -name "*.report.*" -type f 2>/dev/null || echo "Nenhum relatório encontrado"
+      
+      - name: Upload Relatório Lighthouse
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: lighthouse-report
-          path: .lighthouseci/
+          path: |
+            .lighthouseci/
+            **/*.report.html
+            **/*.report.json
           retention-days: 30
-      
-      - name: Upload Relatório Lighthouse (JSON)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: lighthouse-json
-          path: .lighthouseci/**/*.json
-          retention-days: 30
+          if-no-files-found: warn
 
   deploy-gh-pages:
     needs: [build-test, docker-e2e]
-    if: github.ref == 'refs/heads/main' && always()
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -161,6 +162,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: '_site'
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3 
