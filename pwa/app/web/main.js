@@ -279,3 +279,4 @@ fetch(apiUrl)
     // --- Inicialização ---
     loadAppState();
 });
+
