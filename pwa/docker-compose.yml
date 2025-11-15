@@ -31,8 +31,5 @@ services:
     networks:
       - app-network
 
-    volumes:
-      - ./playwright-report:playwright-report
-
 networks:
   app-network:
