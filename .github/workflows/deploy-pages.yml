@@ -1,0 +1,40 @@
+name: Deploy PWA to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_run:
+    workflows: ["CI/CD PWA + Backend"]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.workflow_run.conclusion == 'success'
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Copiar PWA para raiz
+        run: |
+          mkdir -p deploy
+          cp -r pwa/app/web/* deploy/
+          echo "✅ PWA copiada para ./deploy"
+      
+      - name: Deploy PWA com gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy
+          cname: ""
+          force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'chore: deploy PWA [skip ci]'
+      
+      - name: PWA publicada com sucesso!
+        run: |
+          echo "🎉 PWA publicada em:"
+          echo "https://mtech.github.io/bootcamp2-chrome-ext-MTECHDevelopment/"
