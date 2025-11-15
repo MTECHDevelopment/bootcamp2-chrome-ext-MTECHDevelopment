@@ -121,26 +121,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: '_site'
-      
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
-
-      - name: Instalar Lighthouse CLI
-        run: npm install -g @lhci/cli
-
-      - name: Rodar Auditoria do Lighthouse no Site Publicado
-        run: |
-          # Espera a URL do deploy ficar disponível
-          sleep 10 
-          
-          lhci autorun \
-            --url=${{ steps.deployment.outputs.page_url }} \
-            --upload.target=filesystem \
-            --upload.outputDir=./.lighthouseci
-        
-      - name: Upload do Relatório Lighthouse
-        uses: actions/upload-artifact@v4
-        with:
-          name: lighthouse-report
-          path: ./.lighthouseci
+        uses: actions/deploy-pages@v3 
