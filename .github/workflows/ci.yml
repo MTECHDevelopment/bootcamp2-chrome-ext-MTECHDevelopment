@@ -80,20 +80,47 @@ jobs:
         with:
           node-version: '20'
       
-      - name: Instalar Lighthouse CI
-        run: npm install -g @lhci/cli@0.11.x
+      - name: Instalar dependências globais
+        run: |
+          npm install -g @lhci/cli@0.11.x
+          npm install -g serve
+      
+      - name: Iniciar servidor estático em background
+        working-directory: ./pwa/app/web
+        run: |
+          npx serve -l 8080 &
+          echo $! > /tmp/serve.pid
+          sleep 5
+          curl -I http://localhost:8080 || echo "Servidor ainda iniciando..."
+          sleep 3
       
       - name: Rodar Lighthouse CI
         run: |
-          lhci autorun --static-dist-dir=pwa/app/web || true
+          lhci autorun || echo "Lighthouse concluído com avisos"
         continue-on-error: true
       
-      - name: Upload Relatório Lighthouse
+      - name: Parar servidor
+        if: always()
+        run: |
+          if [ -f /tmp/serve.pid ]; then
+            kill $(cat /tmp/serve.pid) || true
+          fi
+      
+      - name: Upload Relatório Lighthouse (HTML)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: lighthouse-report
           path: .lighthouseci/
+          retention-days: 30
+      
+      - name: Upload Relatório Lighthouse (JSON)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-json
+          path: .lighthouseci/**/*.json
+          retention-days: 30
 
   deploy-gh-pages:
     needs: [build-test, docker-e2e]
