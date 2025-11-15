@@ -269,7 +269,13 @@ fetch(apiUrl)
     colorPicker.addEventListener('input', (e) => {
         applyBorderColor(e.target.value);
     });
-
+    document.addEventListener('selectionchange', () => {
+        // Roda a função de stats apenas se o foco estiver no editor
+        // Isso evita rodar a função desnecessariamente
+        if (document.activeElement === noteEditor) {
+            updateAllStats();
+        }
+    });
     // --- Inicialização ---
     loadAppState();
 });

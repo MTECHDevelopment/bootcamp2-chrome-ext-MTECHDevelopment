@@ -1,22 +1,35 @@
 services:
+  
   api:
     build: ./app/api
-    ports: ["3000:3000"]
     container_name: bootcamp-api
-    environment:
-      - NODE_ENV=production
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
-      interval: 10s
-      timeout: 3s
-      retries: 3
+    ports:
+      - "3000:3000" # Expõe a API no localhost:3000
+    networks:
+      - app-network
 
   web:
     build: ./app/web
-    ports: ["8080:80"]
     container_name: bootcamp-web
-    environment:
-      - API_URL=http://api:3000  # URL interna do Docker
+    ports:
+      - "8080:80" # Expõe o PWA no localhost:8080
     depends_on:
-      api:
-        condition: service_healthy
+      - api
+    networks:
+      - app-network
+
+  e2e:
+    build:
+      context: .
+      dockerfile: Dockerfile.e2e
+    container_name: bootcamp-e2e
+    # Este serviço roda os testes e para
+    command: npx playwright test
+    depends_on:
+      - web
+      - api
+    networks:
+      - app-network
+
+networks:
+  app-network:
