@@ -139,7 +139,13 @@ fetch(apiUrl)
         saveNotes();
         
         currentNoteId = newNote.id;
-        selectNote(newNote.id);
+        
+        // Limpa o editor e o desabilita
+        noteEditor.value = '';
+        noteEditor.disabled = false;
+        
+        updateAllStats();
+        renderNoteList(); // Redesenha a lista para marcar o item ativo
     }
 
     /**

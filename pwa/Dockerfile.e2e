@@ -4,6 +4,3 @@ WORKDIR /app
 
 # Copia todo o projeto para o container de teste
 COPY . .
-
-# Instala deps para a config do Playwright (se houver)
-RUN npm install

@@ -5,23 +5,13 @@
   "version": "0.1.1",
   "description": "Destaca links, mostra estatísticas e notas",
   "icons": {
-    "16": "src/icons/icon16.png",
-    "32": "src/icons/icon32.png",
-    "48": "src/icons/icon48.png",
-    "128": "src/icons/icon128.png"
-  },
-  "action": {
-    "default_title": "Diga Olá!",
-    "default_popup": "src/popup/popup.html",
-    "default_icon": {
-      "16": "src/icons/icon16.png",
-      "32": "src/icons/icon32.png",
-      "48": "src/icons/icon48.png",
-      "128": "src/icons/icon128.png"
-    }
+    "16": "icons_pwa/icon16.png",
+    "32": "icons_pwa/icon32.png",
+    "48": "icons_pwa/icon48.png",
+    "128": "icons_pwa/icon128.png"
   },
   "background": {
-    "service_worker": "src/background/service-worker.js",
+    "service_worker": "service-worker.js",
     "type": "module"
   },
   "permissions": [
@@ -34,33 +24,13 @@
   "host_permissions": [
     "<all_urls>"
   ],
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["src/content/content.js"]
-    }
-  ],
-  "options_page": "src/options/options.html",
+  "options_page": "options.html",
   "start_url": "/",
   "display": "standalone",
   "scope": "/",
   "theme_color": "#ec0089",
   "background_color": "#ffffff",
   "orientation": "portrait-primary",
-  "icons": [
-    {
-      "src": "/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
   "screenshots": [
     {
       "src": "/screenshots/screenshot1.png",
