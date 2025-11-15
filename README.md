@@ -1,22 +1,22 @@
-# 📱 Bootcamp II — PWA + Backend + Docker + CI/CD
+#  Bootcamp II — PWA + Backend + Docker + CI/CD
 
 > **Entrega Final em Grupo**: Progressive Web App (PWA) completo com backend API containerizado, testes E2E automatizados e CI/CD no GitHub Actions.
 
 ![CI Status](https://github.com/MTECHDevelopment/bootcamp2-chrome-ext-MTECHDevelopment/actions/workflows/ci.yml/badge.svg)
 
-## 🎯 Sobre o Projeto
+## Sobre o Projeto
 
 Este projeto transforma uma **extensão Chrome (Entrega I)** em um **PWA funcional** com:
-- 📝 **Bloco de Notas PWA** (funciona offline, installável)
-- 🔗 **Backend API** (Express.js) com endpoints REST
-- 🐳 **Containerização** completa (Docker Compose)
-- 🧪 **Testes E2E** automatizados (Playwright)
-- ⚙️ **CI/CD** no GitHub Actions com build, testes e deploy
-- 🌐 **Publicação** automática em GitHub Pages
+- **Bloco de Notas PWA** (funciona offline, instalável)
+- **Backend API** (Express.js) com endpoints REST
+- **Containerização** completa (Docker Compose)
+- **Testes E2E** automatizados (Playwright)
+- **CI/CD** no GitHub Actions com build, testes e deploy
+- **Publicação** automática em GitHub Pages
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Rodar Localmente (Docker Compose)
 
@@ -40,7 +40,7 @@ docker-compose up
 
 ---
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 bootcamp2-chrome-ext-MTECHDevelopment/
@@ -68,26 +68,26 @@ bootcamp2-chrome-ext-MTECHDevelopment/
 
 ---
 
-## 🌐 PWA — Manifest e Offline
+## PWA — Manifest e Offline
 
 ### Manifest (`manifest.webmanifest`)
-- ✅ Nome, ícones, cores e start_url definidos
-- ✅ Display: `standalone` (app-like)
-- ✅ Suporte a dispositivos móveis (responsive)
+- Nome, ícones, cores e start_url definidos
+- Display: `standalone` (app-like)
+- Suporte a dispositivos móveis (responsive)
 
 ### Service Worker (`service-worker.js`)
-- ✅ Cache estratégia (Cache First)
-- ✅ Funciona offline
-- ✅ Atualização incremental
+- Cache estratégia (Cache First)
+- Funciona offline
+- Atualização incremental
 
 ### Instalação
 1. Abra http://localhost:8080
 2. Chrome → Menu → "Install app" ou clique no ícone de instalação
-3. App instalado na tela inicial! 📱
+3. App instalado na tela inicial!
 
 ---
 
-## 🔗 API REST — Endpoints
+## API REST — Endpoints
 
 | Método | Endpoint | Descrição | Exemplo |
 |--------|----------|-----------|---------|
@@ -105,7 +105,7 @@ bootcamp2-chrome-ext-MTECHDevelopment/
 
 ---
 
-## 🧪 Testes
+## Testes
 
 ### E2E com Playwright
 
@@ -118,13 +118,13 @@ npm run test:e2e
 ```
 
 **Testes implementados:**
-- ✅ API endpoint `/api/hello` retorna JSON válido
-- ✅ PWA carrega com título correto
-- ✅ Offline funciona (Service Worker)
+- API endpoint `/api/hello` retorna JSON válido
+- PWA carrega com título correto
+- Offline funciona (Service Worker)
 
 ---
 
-## 🐳 Docker Compose
+## Docker Compose
 
 ### Serviços
 
@@ -153,7 +153,7 @@ docker-compose down -v
 
 ---
 
-## ⚙️ CI/CD — GitHub Actions
+## CI/CD — GitHub Actions
 
 ### Pipeline Automático
 
@@ -164,13 +164,13 @@ docker-compose down -v
 5. **Deploy**: Publica PWA em GitHub Pages
 
 ### Artefatos Salvos
-- 📊 Relatório Playwright (HTML)
-- 📦 Pacote PWA
-- 📈 Relatório Lighthouse (opcional)
+- Relatório Playwright (HTML)
+- Pacote PWA
+- Relatório Lighthouse (opcional)
 
 ---
 
-## 📊 Performance — Lighthouse
+## Performance — Lighthouse
 
 Métricas esperadas (validadas em CI):
 - **Performance**: ≥ 80
@@ -181,7 +181,7 @@ Métricas esperadas (validadas em CI):
 
 ---
 
-## 🌍 Publicação — GitHub Pages
+## Publicação — GitHub Pages
 
 PWA publicado em: `https://mtech.github.io/bootcamp2-chrome-ext-MTECHDevelopment/`
 
@@ -189,25 +189,25 @@ Automaticamente updated a cada push em `main`.
 
 ---
 
-## 📝 Funcionalidades do PWA
+## Funcionalidades do PWA
 
 ### Bloco de Notas
-- ✅ Criar/editar/deletar notas
-- ✅ Persistência em localStorage
-- ✅ Offline completo
-- ✅ Download em TXT
+- Criar/editar/deletar notas
+- Persistência em localStorage
+- Offline completo
+- Download em TXT
 
 ### Estatísticas
-- ✅ Contagem de palavras, caracteres, links, imagens
-- ✅ Caracteres selecionados em tempo real
+- Contagem de palavras, caracteres, links, imagens
+- Caracteres selecionados em tempo real
 
 ### Customização
-- ✅ Seletor de cor da borda do editor
-- ✅ Persistência de preferências
+- Seletor de cor da borda do editor
+- Persistência de preferências
 
 ---
 
-## 🛠️ Desenvolvimento
+## Desenvolvimento
 
 ### Setup Local (sem Docker)
 
@@ -232,7 +232,7 @@ npm start
 
 ---
 
-## 📚 Como Contribuir
+## Como Contribuir
 
 1. Fork o repositório
 2. Crie uma branch: `git checkout -b feature/sua-feature`
@@ -242,7 +242,7 @@ npm start
 
 ---
 
-## 📧 Contato & Links
+## Contato & Links
 
 - **GitHub**: [MTECHDevelopment/bootcamp2-chrome-ext-MTECHDevelopment](https://github.com/MTECHDevelopment/bootcamp2-chrome-ext-MTECHDevelopment)
 - **PWA Live**: [GitHub Pages](https://mtech.github.io/bootcamp2-chrome-ext-MTECHDevelopment/)
@@ -250,7 +250,7 @@ npm start
 
 ---
 
-## 🎓 Extensão Chrome Original — Objetivos e funcionalidades
+## Extensão Chrome Original — Objetivos e funcionalidades
 
 - Destacar links da página
 	- Alternar destaque de links (ligado/desligado) diretamente no popup.
@@ -338,4 +338,4 @@ Observações:
 
 ---
 
-MTECHDevelopment — Bootcamp 2
+MTECHDevelopment e CatPy123 — Bootcamp 2
