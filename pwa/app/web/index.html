@@ -9,8 +9,8 @@
     <meta name="description" content="Um bloco de notas simples que funciona offline."/>
     
     <link rel="stylesheet" href="style.css" />
-    <link rel="manifest" href="manifest.webmanifest" crossorigin="anonymous" />
-    <link rel="apple-touch-icon" href="icons_pwa/icon128.png">
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
 </head>
 <body>
 
@@ -45,15 +45,21 @@
                     <input id="color-picker" type="color" value="#6366f1" />
                 </label>
                 <div class="actions">
-                    <button id="btn-install" class="btn install-btn" style="display: none;">
-                        ⬇️ Instalar App
-                    </button>
                     <button id="btn-download" class="btn">Baixar .txt</button>
                     <button id="btn-delete-note" class="btn danger">Excluir Nota</button>
                 </div>
             </section>
         </main>
 
-    </div> <script src="main.js" defer></script>
+    </div>     <script src="main.js" defer></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js').then(reg => {
+                console.log('Service Worker registrado com sucesso:', reg);
+            }).catch(err => {
+                console.error('Erro ao registrar Service Worker:', err);
+            });
+        }
+    </script>
 </body>
 </html>

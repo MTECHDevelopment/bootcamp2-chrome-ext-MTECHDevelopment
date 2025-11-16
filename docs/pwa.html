@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="PWA - Bloco de Notas da Extensão MTECHDevelopment" />
+    <title>PWA Bloco de Notas • MTECHDevelopment e CatPy123</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrap">
+            <h1 class="site-title">PWA — Bloco de Notas</h1>
+            <p class="site-subtitle">Progressive Web App para gerenciar notas localmente</p>
+        </div>
+    </header>
+
+    <nav class="nav-bar">
+        <div class="wrap nav-wrap">
+            <a href="./index.html" class="nav-link">← Voltar</a>
+            <ul class="nav-links">
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#como-usar" class="nav-link">Como Usar</a></li>
+                <li><a href="#app" class="nav-link">Acessar PWA</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="content wrap" id="topo">
+        <section class="intro-text" id="sobre">
+            <h2 class="section-title">O que é?</h2>
+            <p>
+                A <strong>PWA (Progressive Web App) — Bloco de Notas</strong> é uma aplicação web independente 
+                que funciona offline e oferece uma experiência similar à de um aplicativo nativo. 
+                Você pode criar, editar e gerenciar suas notas de forma simples e rápida, com dados 
+                persistentes armazenados localmente no navegador.
+            </p>
+            <p>
+                Esta PWA complementa a extensão Chrome, permitindo um espaço dedicado para anotações 
+                sem precisar estar em uma página específica. Ao instalar no seu dispositivo, ela 
+                funciona offline e sincroniza dados quando a conexão é restabelecida.
+            </p>
+        </section>
+
+        <section class="features" id="como-usar">
+            <h2 class="section-title">Recursos</h2>
+            <ul>
+                <li><strong>Criar notas:</strong> escreva e organize suas anotações por título.</li>
+                <li><strong>Offline:</strong> funciona sem conexão com a internet após o primeiro acesso.</li>
+                <li><strong>Persistência:</strong> suas notas são armazenadas localmente e não são perdidas.</li>
+                <li><strong>Instalável:</strong> instale como aplicativo no seu dispositivo (Chrome, Edge, etc.).</li>
+                <li><strong>Sincronização:</strong> dados salvos localmente e disponíveis em múltiplos acessos.</li>
+                <li><strong>Interface limpa:</strong> design minimalista e intuitivo para máxima produtividade.</li>
+            </ul>
+        </section>
+
+        <section class="pwa-app-section" id="app">
+            <h2 class="section-title">Executar PWA</h2>
+            <p>Escolha uma opção abaixo para acessar o bloco de notas:</p>
+            <div class="app-options">
+                <div class="app-option">
+                    <h3> Via Docker Compose</h3>
+                    <p>Método recomendado para desenvolvimento e testes.</p>
+                    <pre><code>docker compose run --build e2e</code></pre>
+                    <p class="note">A PWA estará disponível em <strong>http://localhost:8080</strong></p>
+                </div>
+                <div class="app-option">
+                    <h3> Servidor Local (Python)</h3>
+                    <p>Para desenvolvimento rápido sem Docker:</p>
+                    <pre><code>cd pwa && python3 -m http.server 8080</code></pre>
+                    <p class="note">Acesse em <strong>http://localhost:8080</strong></p>
+                </div>
+                <div class="app-option">
+                    <h3> HTTP Server (Node)</h3>
+                    <p>Alternativa com Node.js:</p>
+                    <pre><code>npm install -g http-server && http-server pwa -p 8080</code></pre>
+                    <p class="note">Acesse em <strong>http://localhost:8080</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="installation-guide" id="instalacao">
+            <h2 class="section-title">Instalar a PWA</h2>
+            <p>Após servir a PWA localmente, siga os passos abaixo para instalá-la:</p>
+            <ol class="how-to-install">
+                <li>
+                    <strong>Acesse a URL:</strong> Abra seu navegador em <code>http://localhost:8080</code>
+                </li>
+                <li>
+                    <strong>Procure pelo botão "Instalar":</strong> No Chrome/Edge, clique no ícone <strong>+</strong> ou <strong>Instalar</strong> na barra de endereço
+                </li>
+                <li>
+                    <strong>Confirme a instalação:</strong> Clique em "Instalar" na caixa de diálogo
+                </li>
+                <li>
+                    <strong>Pronto!</strong> A PWA será instalada como aplicativo no seu dispositivo
+                </li>
+            </ol>
+            <p class="hint">
+                💡 <strong>Dica:</strong> Após instalar, você pode acessar a PWA direto do menu de aplicativos 
+                do seu sistema, sem precisar abrir o navegador.
+            </p>
+        </section>
+
+        <section class="offline-guide">
+            <h2 class="section-title">Funcionalidades Offline</h2>
+            <p>
+                A PWA inclui um <strong>Service Worker</strong> que cache os arquivos necessários 
+                para funcionamento offline. Aqui está como testar:
+            </p>
+            <div class="offline-steps">
+                <div class="step">
+                    <h4>1️ Primeira Visita</h4>
+                    <p>Abra a PWA e navegue por algumas seções. O Service Worker irá cache os arquivos.</p>
+                </div>
+                <div class="step">
+                    <h4>2️ Ativar Modo Offline</h4>
+                    <p>Abra as DevTools (F12) → Application → Service Workers → ative "Offline"</p>
+                </div>
+                <div class="step">
+                    <h4>3️ Testar Funcionalidade</h4>
+                    <p>Recarregue a página ou navegue sem conexão. A PWA deve continuar funcionando normalmente.</p>
+                </div>
+                <div class="step">
+                    <h4>4️ Desativar Offline</h4>
+                    <p>Desative o modo offline nas DevTools e a sincronização continuará normal.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-stack">
+            <h2 class="section-title">Tecnologias Utilizadas</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>HTML5</h4>
+                    <p>Estrutura semântica e PWA manifest</p>
+                </div>
+                <div class="tech-item">
+                    <h4>CSS3</h4>
+                    <p>Estilização responsiva e moderna</p>
+                </div>
+                <div class="tech-item">
+                    <h4>JavaScript</h4>
+                    <p>Lógica da aplicação e manipulação do DOM</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Service Worker</h4>
+                    <p>Cache e funcionalidades offline</p>
+                </div>
+                <div class="tech-item">
+                    <h4>LocalStorage</h4>
+                    <p>Persistência de dados locais</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Docker</h4>
+                    <p>Containerização para desenvolvimento</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="troubleshooting">
+            <h2 class="section-title">Solução de Problemas</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <h4> A PWA não carrega</h4>
+                    <p>
+                        Verifique se o servidor está rodando corretamente. Abra as DevTools (F12), 
+                        vá para a aba "Console" e procure por erros. Certifique-se de que está acessando 
+                        em <code>http://localhost:8080</code>.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h4> O botão "Instalar" não aparece</h4>
+                    <p>
+                        Alguns navegadores só mostram o botão de instalação após alguns segundos. 
+                        Aguarde alguns momentos. Além disso, o site deve estar servido por HTTPS 
+                        em produção (localhost HTTP é aceito para desenvolvimento).
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h4> As notas não estão sendo salvas</h4>
+                    <p>
+                        Verifique se o navegador permite LocalStorage. Se estiver em modo incógnito, 
+                        os dados podem não persistir. Abra as DevTools → Application → LocalStorage 
+                        e confirme se os dados estão sendo armazenados.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h4> Como desinstalar a PWA?</h4>
+                    <p>
+                        No Chrome/Edge, clique com o botão direito no ícone da PWA → "Desinstalar". 
+                        Alternativamente, vá para "chrome://apps" ou "edge://apps", procure pelo app e clique em desinstalar.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="download-cta" aria-labelledby="download-title">
+            <h2 id="download-title" class="section-title">Documentação Completa</h2>
+            <p class="cta-desc">Para mais detalhes sobre a extensão e a PWA, consulte o README do projeto.</p>
+            <a
+                class="btn btn-download"
+                href="https://github.com/CatPy123/bootcamp2-chrome-ext-MTECHDevelopment"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Acessar repositório no GitHub"
+            >
+                <span aria-hidden="true" class="btn-ico" role="img">🔗</span>
+                Acessar Repositório
+            </a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <p>© <span id="year"></span> PWA Bloco de Notas — MTECHDevelopment & CatPy123</p>
+            <a class="back-top" href="#topo" aria-label="Voltar ao topo">▲ Topo</a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

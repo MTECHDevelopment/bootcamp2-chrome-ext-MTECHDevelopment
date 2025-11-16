@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Documentação da Extensão Chrome Popup" />
+    <title>Extensão Popup • MTECHDevelopment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrap">
+            <h1 class="site-title">Extensão Popup</h1>
+            <p class="site-subtitle">Destaque, Produtividade e Anotações Rápidas</p>
+        </div>
+    </header>
+
+    <nav class="nav-bar">
+        <div class="wrap nav-wrap">
+            <a href="./index.html" class="nav-link">← Voltar</a>
+            <ul class="nav-links">
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#recursos" class="nav-link">Recursos</a></li>
+                <li><a href="#instalacao" class="nav-link">Instalação</a></li>
+                <li><a href="#capturas" class="nav-link">Capturas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="content wrap" id="topo">
+        <section class="intro-text" id="sobre">
+            <h2 class="section-title">Sobre a Extensão</h2>
+            <p>
+                A <strong>Extensão Popup</strong> é uma extensão Chrome (Manifest V3) focada em 
+                <strong>leitura, produtividade e anotações rápidas</strong> na página atual. 
+                Com um design minimalista e funcionalidades práticas, ela permite que você:
+            </p>
+            <ul>
+                <li>Destaque links com cores personalizáveis</li>
+                <li>Veja estatísticas rápidas da página (links, imagens, palavras)</li>
+                <li>Navegue por títulos e sumários (H1–H3)</li>
+                <li>Ative um modo foco para leitura sem distrações</li>
+                <li>Copie seleções de texto com um clique</li>
+                <li>Registre notas por site e exporte em TXT</li>
+            </ul>
+        </section>
+
+        <section class="features" id="recursos">
+            <h2 class="section-title">Funcionalidades Principais</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🎨 Destaque de Links</h3>
+                    <p>
+                        Alternar o destaque de links diretamente no popup e escolher 
+                        a cor que preferir. Suas preferências são salvas automaticamente.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 Estatísticas da Página</h3>
+                    <p>
+                        Veja rapidamente quantos links, imagens e palavras existem na página. 
+                        Também mostra o tamanho da sua seleção de texto atual.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3>📑 Navegação por Títulos</h3>
+                    <p>
+                        Lista todos os títulos H1–H3 da página. Clique em um para rolar 
+                        suavemente até a seção correspondente.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎯 Modo Foco</h3>
+                    <p>
+                        Escurece as bordas da página para reduzir distrações e ajudar 
+                        na concentração durante a leitura.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3>📋 Copiar Seleção</h3>
+                    <p>
+                        Copia rapidamente o texto selecionado na aba atual 
+                        direto para a área de transferência.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3>📝 Notas + Exportação</h3>
+                    <p>
+                        Escreva notas por site e ao salvar, gere um arquivo TXT 
+                        com resumo da extensão, dados da página e sua nota.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-to-section" id="instalacao">
+            <h2 class="section-title">Como Instalar</h2>
+            <p>Siga os passos abaixo para instalar a extensão no seu Chrome:</p>
+            <ol class="how-to">
+                <li>
+                    <strong>Acesse o painel de extensões:</strong> 
+                    <code>chrome://extensions</code> na barra de endereço do Chrome
+                </li>
+                <li>
+                    <strong>Ative o Modo do Desenvolvedor:</strong> 
+                    Clique no toggle no canto superior direito
+                </li>
+                <li>
+                    <strong>Clique em "Carregar sem compactação":</strong> 
+                    Selecione a pasta da extensão do repositório
+                </li>
+                <li>
+                    <strong>Pronto!</strong> 
+                    A extensão já estará disponível. Clique no ícone para abrir o popup
+                </li>
+            </ol>
+        </section>
+
+        <section class="gallery" id="capturas" aria-label="Galeria de capturas da extensão">
+            <h2 class="section-title">Capturas de Tela</h2>
+            <p>Veja a extensão em ação:</p>
+            <div class="gallery-grid">
+                <figure class="shot">
+                    <img loading="lazy" src="./imgs/mudando_cor.png" alt="Mudando cor do destaque dos links">
+                    <figcaption>Mudando cor do destaque dos links</figcaption>
+                </figure>
+                <figure class="shot">
+                    <img loading="lazy" src="./imgs/foco.png" alt="Modo foco">
+                    <figcaption>Modo foco</figcaption>
+                </figure>
+                <figure class="shot">
+                    <img loading="lazy" src="./imgs/copiando_texto.png" alt="Copiando texto">
+                    <figcaption>Copiando texto</figcaption>
+                </figure>
+                <figure class="shot">
+                    <img loading="lazy" src="./imgs/notas.png" alt="Notas que podem ser salvas">
+                    <figcaption>Notas que podem ser salvas</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="architecture" aria-label="Arquitetura da extensão">
+            <h2 class="section-title">Arquitetura (Manifest V3)</h2>
+            <p>A extensão é estruturada com os seguintes componentes:</p>
+            <div class="architecture-grid">
+                <div class="arch-item">
+                    <h4>📱 Popup (UI)</h4>
+                    <p><code>src/popup/</code><br>Interface visual onde o usuário interage com as funcionalidades</p>
+                </div>
+                <div class="arch-item">
+                    <h4>🔗 Content Script</h4>
+                    <p><code>src/content/content.js</code><br>Executa no contexto da página para coletar dados e aplicar mudanças</p>
+                </div>
+                <div class="arch-item">
+                    <h4>⚙️ Service Worker</h4>
+                    <p><code>src/background/service-worker.js</code><br>Tarefas de background, gerenciamento de permissões e eventos</p>
+                </div>
+                <div class="arch-item">
+                    <h4>📋 Manifesto</h4>
+                    <p><code>manifest.json</code><br>Configuração da extensão, permissões e metadados</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="permissions">
+            <h2 class="section-title">Permissões Utilizadas</h2>
+            <p>A extensão solicita as seguintes permissões e justificativas:</p>
+            <div class="permissions-list">
+                <div class="perm-item">
+                    <strong>activeTab, tabs</strong>
+                    <p>Identificar a aba ativa e obter URL/título para agir no contexto correto</p>
+                </div>
+                <div class="perm-item">
+                    <strong>scripting</strong>
+                    <p>Executar trechos de código na página para coletar estatísticas e títulos</p>
+                </div>
+                <div class="perm-item">
+                    <strong>storage</strong>
+                    <p>Guardar preferências (cor, destaque) e notas por domínio</p>
+                </div>
+                <div class="perm-item">
+                    <strong>downloads</strong>
+                    <p>Gerar e baixar o arquivo TXT com notas e informações da página</p>
+                </div>
+                <div class="perm-item">
+                    <strong>host_permissions: &lt;all_urls&gt;</strong>
+                    <p>Permitir funcionamento em qualquer site visitado</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="requirements">
+            <h2 class="section-title">Requisitos Atendidos</h2>
+            <p>Todos os requisitos do projeto foram implementados com sucesso:</p>
+            <ul class="checklist">
+                <li><span class="check">✓</span> Destacar links com cor personalizada</li>
+                <li><span class="check">✓</span> Exibir estatísticas (links, imagens, palavras, seleção)</li>
+                <li><span class="check">✓</span> Sumário de títulos H1–H3 com navegação</li>
+                <li><span class="check">✓</span> Modo foco de leitura</li>
+                <li><span class="check">✓</span> Copiar seleção</li>
+                <li><span class="check">✓</span> Notas por site (armazenamento local)</li>
+                <li><span class="check">✓</span> Exportar TXT ao salvar notas</li>
+            </ul>
+        </section>
+
+        <section class="download-cta" aria-labelledby="download-title">
+            <h2 id="download-title" class="section-title">Baixar a Extensão</h2>
+            <p class="cta-desc">Faça o download ou acesse o repositório para instalar manualmente.</p>
+            <div class="cta-buttons">
+                <a
+                    class="btn btn-download"
+                    href="https://github.com/CatPy123/bootcamp2-chrome-ext-MTECHDevelopment/archive/refs/heads/main.zip"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download="extensao.zip"
+                    aria-label="Baixar arquivo ZIP da extensão"
+                >
+                    <span aria-hidden="true" class="btn-ico" role="img">⬇</span>
+                    Baixar .ZIP
+                </a>
+                <a
+                    class="btn btn-primary"
+                    href="https://github.com/CatPy123/bootcamp2-chrome-ext-MTECHDevelopment"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Acessar repositório no GitHub"
+                >
+                    <span aria-hidden="true" class="btn-ico" role="img">🔗</span>
+                    GitHub
+                </a>
+            </div>
+            <p class="cta-hint">
+                Após baixar, extraia o arquivo e siga os passos da seção de instalação acima 
+                usando <strong>chrome://extensions</strong> e ativando o Modo do Desenvolvedor.
+            </p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <p>© <span id="year"></span> Extensão Popup — MTECHDevelopment</p>
+            <a class="back-top" href="#topo" aria-label="Voltar ao topo">▲ Topo</a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
