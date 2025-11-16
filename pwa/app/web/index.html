@@ -57,7 +57,17 @@
     </div>     <script src="main.js" defer></script>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js').then(reg => {
+            // Detecta se está no GitHub Pages
+            const isGitHubPages = window.location.hostname.includes('github.io');
+            const swPath = isGitHubPages 
+                ? '/bootcamp2-chrome-ext-MTECHDevelopment/service-worker.js'
+                : '/service-worker.js';
+            
+            navigator.serviceWorker.register(swPath, {
+                scope: isGitHubPages 
+                    ? '/bootcamp2-chrome-ext-MTECHDevelopment/'
+                    : '/'
+            }).then(reg => {
                 console.log('Service Worker registrado com sucesso:', reg);
             }).catch(err => {
                 console.error('Erro ao registrar Service Worker:', err);
