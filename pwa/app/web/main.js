@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        btnInstall.style.display = 'flex'; // Mostra o botão quando é possível instalar
+        btnInstall.textContent = '⬇️ Instalar App';
+        btnInstall.style.opacity = '1';
     });
     
     btnInstall.addEventListener('click', async () => {
@@ -31,15 +32,25 @@ document.addEventListener('DOMContentLoaded', () => {
             deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
             console.log(`Instalação: ${outcome}`);
+            if (outcome === 'accepted') {
+                btnInstall.textContent = '✅ Instalado!';
+                btnInstall.disabled = true;
+            }
             deferredPrompt = null;
-            btnInstall.style.display = 'none'; // Esconde após tentar instalar
+        } else {
+            // Se não há prompt disponível, mostra instruções
+            alert('Para instalar o app:\n\n' +
+                  '🖥️ Desktop: Clique no ícone ⊕ na barra de endereços\n' +
+                  '📱 Mobile: Abra o menu do navegador e selecione "Instalar app"\n\n' +
+                  'Obs: O app já pode estar instalado!');
         }
     });
 
     window.addEventListener('appinstalled', () => {
         console.log('PWA foi instalado com sucesso!');
+        btnInstall.textContent = '✅ Instalado!';
+        btnInstall.disabled = true;
         deferredPrompt = null;
-        btnInstall.style.display = 'none';
     });
 
     // --- Estado da Aplicação ---
