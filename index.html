@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloco de Notas PWA</title>
+    
+    <meta name="theme-color" content="#171a20"/>
+    <meta name="description" content="Um bloco de notas simples que funciona offline."/>
+    
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+            <header class="header">
+                <h1 class="title">Bloco de Notas</h1>
+                <button id="btn-new-note" class="btn primary">Nova Nota</button>
+            </header>
+            <ul id="note-list" class="note-list">
+                <li class="placeholder">Nenhuma nota ainda...</li>
+            </ul>
+        </aside>
+
+        <main class="editor-container">
+            <section class="editor-area">
+                <textarea id="note-editor" placeholder="Escreva sua nota aqui..."></textarea>
+            </section>
+
+            <section class="stats" aria-label="Resumo da nota">
+                <div class="stat"><span class="label">Palavras</span><span id="stat-words" class="value">0</span></div>
+                <div class="stat"><span class="label">Links</span><span id="stat-links" class="value">0</span></div>
+                <div class="stat"><span class="label">Imagens</span><span id="stat-images" class="value">0</span></div>
+                <div class="stat"><span class="label">Caracteres</span><span id="stat-characters" class="value">0</span></div>
+                <div class="stat"><span class="label">Caracteres Selecionados</span><span id="stat-selected-characters" class="value">0</span></div>
+            </section>
+
+            <section class="controls" aria-label="Controles do editor">
+                <label class="color">
+                    Cor da Borda
+                    <input id="color-picker" type="color" value="#6366f1" />
+                </label>
+                <div class="actions">
+                    <button id="btn-install" class="btn install-btn">
+                        📱 Instalar App
+                    </button>
+                    <button id="btn-download" class="btn">Baixar .txt</button>
+                    <button id="btn-delete-note" class="btn danger">Excluir Nota</button>
+                </div>
+            </section>
+        </main>
+
+    </div>     <script src="main.js" defer></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            // Detecta se está no GitHub Pages
+            const isGitHubPages = window.location.hostname.includes('github.io');
+            const swPath = isGitHubPages 
+                ? '/bootcamp2-chrome-ext-MTECHDevelopment/service-worker.js'
+                : '/service-worker.js';
+            
+            navigator.serviceWorker.register(swPath, {
+                scope: isGitHubPages 
+                    ? '/bootcamp2-chrome-ext-MTECHDevelopment/'
+                    : '/'
+            }).then(reg => {
+                console.log('Service Worker registrado com sucesso:', reg);
+            }).catch(err => {
+                console.error('Erro ao registrar Service Worker:', err);
+            });
+        }
+    </script>
+</body>
+</html>
